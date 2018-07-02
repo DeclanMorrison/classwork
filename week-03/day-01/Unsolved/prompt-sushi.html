@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Sushi Prompt - Unsolved</title>
+  </head>
+  <body>
+
+    <script type="text/javascript">
+
+    var userPreference = confirm("Do you like sushi? ");
+
+    if (userPreference != true)
+      {
+        alert("This user does not like sushi.")
+      }
+    
+    else{
+      var userPreference2 = prompt("What kind of sushi do you like?");
+
+      if (userPreference == true)
+        {
+        userPreference = "Yes.";
+        }
+
+      else
+        {
+          userPreference = "No.";
+        }
+
+      alert("Does this user like sushi? " + userPreference);  
+      alert("This user likes " + userPreference2 + " sushi.") 
+    }
+
+    </script>
+
+  </body>
+</html>

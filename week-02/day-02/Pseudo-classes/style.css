@@ -1,0 +1,36 @@
+.link1{
+    -webkit-transition: background-color 5s;
+    -moz-transition: background-color 5s;
+    -o-transition: background-color 5s;
+    transition: background-color 5s;
+    background-color: white;
+}
+
+.link1:hover{
+    background-color: blue;
+}
+
+.link1:active{
+    background-color: purple;
+}
+
+/* .link1:visited{
+    background-color: grey;
+} */
+
+.link2:hover{
+    background-color: red;
+}
+
+.link2:active{
+    background-color: purple;
+}
+
+/* .link2:visited{
+    background-color: blue;
+} */
+
+button:disabled{
+    color: grey;
+}
+

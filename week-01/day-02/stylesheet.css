@@ -1,0 +1,38 @@
+body
+{
+    margin: 0px;
+    padding: 0px;
+}
+
+header
+{
+    background-color: black;
+    height: 50px;
+}
+
+h1 
+{ 
+    padding: 50%;
+    margin: 0px;
+    font-style: strong;
+    text-align: center;
+    color: white;
+}
+
+h2
+{
+    padding: 15px;
+}
+
+img
+{
+    float: left;
+    padding: 15px;
+}
+
+p
+{
+    width: 150px;
+    text-overflow: clip;
+    padding: 15px;
+}

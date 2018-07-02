@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body onkeyup="keyPressed(event)">
+    <h1>Car Adventures!</h1>
+    <h3>Type "h" to honk, "d" to drive, "w" to drive around the world, and "t" to get a tune up.</h3>
+    <h6>See Console for car stats.</h6>
+
+    <script>
+    
+        var car = {
+            make: "Chevrolet",
+            model: "Corvette",
+            color: "White",
+            mileage: 110000,
+            isWorking: true,
+            
+            honk: function(){
+                alert("Honk!");
+            },
+
+            drive: function(){
+                if (this.isWorking){
+                    alert("The old mileage is " + this.mileage + " miles.");
+                    this.mileage += 20;
+                    alert("The new mileage is " + this.mileage + " miles.");
+                }
+                else{
+                    alert("This car is not working! You need a tuneup!");
+                }
+            },
+
+            driveWorld: function(){
+                if (this.isWorking){
+                    alert("The old mileage is " + this.mileage + " miles.");
+                    this.mileage += 24901;
+                    alert("The new mileage is " + this.mileage + " miles.");
+                    this.isWorking = false;
+                }
+                else{
+                    alert("This car is not working! You need a tuneup!");
+                }
+            },
+
+            tuneUp: function(){
+                this.isWorking = true;
+                alert("This car is now working!");
+            }
+        }
+
+        function reWriteStats(){
+            console.log(car.make);
+            console.log(car.model);
+            console.log(car.color);
+            console.log(car.mileage);
+            console.log(car.isWorking);
+        }
+
+        function keyPressed(e){
+            var keyNum = e.key;
+            if (keyNum.toLowerCase() === "h"){
+                car.honk();
+                reWriteStats();
+            }
+            else if (keyNum.toLowerCase() === "d"){
+                car.drive();
+                reWriteStats();
+            }
+            else if (keyNum.toLowerCase() === "w"){
+                car.driveWorld();
+                reWriteStats();
+            }
+            else if (keyNum.toLowerCase() === "t"){
+                car.tuneUp();
+                reWriteStats();
+            }
+        }
+    
+    </script>
+    
+</body>
+</html>

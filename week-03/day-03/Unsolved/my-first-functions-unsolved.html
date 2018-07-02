@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>My First Function</title>
+  </head>
+  <body>
+
+    <h1>Open the console to see the magic!</h1>
+
+    <script>
+
+      // FUNCTIONS
+      // ================================================================================
+
+      // Create a Function called "adder" that take three arguments (x, y, z).
+      // The function should add the arguments together, and log the result to the console.
+      function adder(){
+        var x = Number(prompt("Pick the first number to add: "));
+        var y = Number(prompt("Pick the first number to add: "));
+        var z = Number(prompt("Pick the first number to add: "));
+        var sum = (x + y + z);
+        alert(parseInt(sum));
+      }
+
+
+      // Create a Function called "multiplier" that takes three arguments (x, y, z).
+      // The function should multiply the arguments, and log the result to the console.
+      function multiplier(x, y, z){
+        var x = Number(prompt("Pick the first number to multiply: "));
+        var y = Number(prompt("Pick the first number to multiply: "));
+        var z = Number(prompt("Pick the first number to multiply: "));
+        var product = (x * y * z);
+        alert(parseInt(product));
+      }
+
+
+      // Create a Function called "isString" that takes three arguments (x, y, z).
+      // "isString" determines if all three arguments are strings and logs an appropriate response to the console.
+      function isString(){
+        var x = prompt("Pick the first number to string check: ");
+        var y = prompt("Pick the first number to string check: ");
+        var z = prompt("Pick the first number to string check: "); 
+        
+        if (typeof x === typeof "string" && typeof y === typeof "string" && typeof z === typeof "string" ) {
+          alert("All are strings");
+        }
+        else{
+          alert("Not all are strings");
+        }
+
+      }
+
+
+      // Create a Function called "vowelChecker" that takes in a single argument (x).
+      // "vowlChecker" logs whether or not the input is a vowel.
+      function vowelChecker(x){
+        var x = prompt("Pick the first number to vowel check: ");
+        if (x === "a" || x === "e" || x === "i" || x === "o" || x === "u"){
+          alert("That letter is a vowel");
+        }
+        else{
+          alert("That letter is constanant");
+        }
+      }
+
+
+      // BONUS
+      // Creates a version of "adder" that returns its result. Function is called "adderReturn".
+      function adderReturn(x, y, z){
+        var x = prompt("Pick the first number to add: ");
+        var y = prompt("Pick the first number to add: ");
+        var z = prompt("Pick the first number to add: ");
+        var sum = (x + y + z);
+        return (sum);
+      }
+
+
+      // Creates a version of "multiplier" that returns its result. Function is called "multiplierReturn".
+      function multiplierReturn(x, y, z){
+        var x = prompt("Pick the first number to multiply: ");
+        var y = prompt("Pick the first number to multiply: ");
+        var z = prompt("Pick the first number to multiply: ");
+        var product = (x * y * z);
+        return (product);
+      }
+
+
+
+      // FUNCTION EXECUTION
+      // ================================================================================
+
+      // Add in the lines of code below necessary to call the functions we created above.
+
+
+      // Call the adder function here.
+      adder(1, 2, 3);
+
+
+      console.log("-------------------");
+
+
+      // Call the multiplier function here.
+      multiplier(1, 2, 3);
+
+
+      console.log("-------------------");
+
+
+      // Call the isString function here.
+      isString("", "", "");
+      isString(6, 5, 0);
+
+
+      console.log("-------------------");
+
+
+      // Call the vowelChecker function here.
+      vowelChecker("e");
+      vowelChecker("x");
+
+
+      console.log("-------------------");
+
+
+      // BONUS
+      // Call the adderReturn function here and set it equal to a variable. Then log that variable to the console.
+      alert(adderReturn(1, 2, 3));
+
+
+      console.log("-------------------");
+
+
+      // Call the multiplierReturn function here and set it equal to a variable. Then log that variable to the console.
+      alert(multiplierReturn(1, 2, 3));
+
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Correct Color Picker</title>
+
+  <!-- Bootstrap File -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+  <!-- JQuery -->
+  <script src="https://code.jquery.com/jquery.js"></script>
+
+  <style>
+    #rand-target-color,
+    #color-picker li {
+      font-size: 24px;
+    }
+  </style>
+
+</head>
+<body>
+
+  <div class="container">
+    <h2>Correct Color Picker</h2>
+    <p>Pick the <b>color</b> of the word shown from the list below it.</p>
+
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">
+
+          <!-- Create random target color -->
+          <span id="rand-target-color">
+          </span>
+
+        </h3>
+      </div>
+      <div class="card-body">
+
+        <!-- Create colors to pick -->
+        <ul class="list-unstyled" id="color-picker">
+        </ul>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    // JavaScript function that wraps everything
+    $(document).ready(function(arg, arg) {
+
+      var colors = [0x0000FF, 0x9400D3, 0xFF0000, 0x00FF00, 0xFFFF00, 0xFF7F00];
+      var words = ["blue", "violet", "red", "green", "yellow", "orange"];
+
+      function random(){
+        return Math.floor(Math.random) + 1;
+      };
+
+      function pickColor() {
+        var num = random();
+
+        var color = colors[num];
+        return color;
+      };
+
+      function pickWord() {
+        var num = random();
+
+        var word = words[num];
+        return word;
+      };
+
+      $("#rand-target-color").text(pickWord()).css("color", random());
+
+      // Run game
+      // reset();
+    });
+
+  </script>
+</body>
+</html>

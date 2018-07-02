@@ -1,0 +1,52 @@
+/**
+ * Float Layout Activity
+ **/
+
+* {
+  box-sizing: border-box;
+  text-align: center;
+}
+
+body {
+  background-color: #fff;
+  margin: 0px 75px;
+  padding: 0px;
+}
+
+p{
+  text-align: justify;
+  text-justify: inter-word;
+  line-height: 1.6;
+}
+
+h1 {
+  text-align: right;
+  color: #111;
+}
+
+div.relative{
+  background-color: #eee;
+  position: relative;
+  padding: 10px 0px 100px 0px;
+
+}
+
+div.absolute{
+  background-color: #999;
+  position: absolute;
+  padding: 30px;
+  bottom: 0px;
+  right: -20px;
+
+}
+
+div.fixed{
+  background-color: #eee;
+  position: fixed;
+  padding: 30px;
+  top: 0px;
+  left: 0px;
+
+}
+
+
