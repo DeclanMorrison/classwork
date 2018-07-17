@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Favorite Movies</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+  <style>
+    .button{
+      margin: 5px;
+    }
+  </style>
+
+
+</head>
+
+<body>
+  <div class="container">
+    <h1>Movie Search</h1>
+
+    <!-- We'll be dumping our JSON contents in here -->
+    <div id="buttons"></div>
+    <div id="movie-view"></div>
+
+    <!-- This form will be where users input data about the movies -->
+    <form id="movie-form">
+      <label for="movie-input">Search for a movie</label>
+      <input type="text" id="movie-input"><br>
+
+      <!-- This button will trigger our AJAX call -->
+      <input id="find-movie" class="btn btn-secondary" type="submit" value="Movie Search">
+      <input id="add-movie" class="btn btn-secondary" type="submit" value="Add A Movie">
+    </form>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+      //Predefined array of movies
+      let movies = ["Avengers", "Iron Man", "Thor", "Captain America"];
+
+      //Make buttons
+      movies.forEach(function (value, index){
+        $("#buttons").append(`<button class="button btn btn-primary">${value}</button>`);
+      });
+
+      //When a movie button is clicked
+      $(document).on("click", ".button", function(){
+
+        //Generate the URL
+        let queryURL = `https://www.omdbapi.com/?t=${$(this).text()}&y=&plot=short&apikey=trilogy`;
+
+        //Clear the div of previous movie, then append the relevant information from the returned JSON object.
+        $.get(queryURL).then(function (response){
+          $("#movie-view").empty();
+          $("#movie-view").append(`<div>Title: ${response.Title}</div>`).append(`<div>Rating: ${response.Rated}</div>`).append(`<div>Released: ${response.Released}</div>`).append(`<div>Plot: ${response.Plot}</div>`).append(`<img src="${response.Poster}" alt="Poster not available">`);
+        });
+
+      });
+
+      //Add movie
+      $("#add-movie").on("click", function (){
+        event.preventDefault();
+        const movie = $("#movie-input").val();
+        $("#buttons").append(`<button class="button btn btn-primary">${movie}</button>`);
+      });
+      
+      // This .on("click") function will trigger the AJAX Call
+      $("#find-movie").on("click", function (event) {
+
+        // Preventing the submit button from trying to submit the form
+        // We're optionally using a form so the user may hit Enter to search instead of clicking the button
+        event.preventDefault();
+
+        // Here we grab the text from the input box
+        var movie = $("#movie-input").val();
+
+        // Here we construct our URL
+        var queryURL = "https://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
+
+        // Write code between the dashes below to hit the queryURL with $ajax, then take the response data
+        // and display it in the div with an id of movie-view
+
+        // YOUR CODE GOES IN THESE DASHES. DO NOT MANUALLY EDIT THE HTML ABOVE
+
+        // =================================================================
+
+        
+
+        //Ajax call using the generated url from the form.
+        $.get(queryURL).then(function (response){
+          $("#movie-view").empty();
+          $("#movie-view").append(`<div>Title: ${response.Title}</div>`).append(`<div>Rating: ${response.Rated}</div>`).append(`<div>Released: ${response.Released}</div>`).append(`<div>Plot: ${response.Plot}</div>`).append(`<img src=${response.Poster}>`);
+        });
+
+        // =================================================================
+      });
+    </script>
+  </div>
+</body>
+
+</html>
