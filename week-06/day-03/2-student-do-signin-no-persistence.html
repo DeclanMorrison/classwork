@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+<head>
+
+  <meta charset="UTF-8">
+  <title>Sign-Up Today!</title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <br>
+
+    <!-- Jumbotron -->
+    <div class="jumbotron">
+      <h1 class="text-center">Sign-Up Today!</h1>
+    </div>
+
+    <div class="row">
+
+      <!-- Sign-Up Card-->
+      <div class="col-lg-6">
+        <div class="card card-default">
+          <div class="card-heading">
+            <h3 class="card-title">New Member Sign-Up</h3>
+          </div>
+          <div class="card-body">
+
+            <!-- Sign-up Form (note the various input "types")-->
+            <form role="form">
+              <div class="form-group row">
+                <label for="name-input">Name:</label>
+                <input class="form-control" data-value="name" id="name-input" type="text">
+              </div>
+              <div class="form-group row">
+                <label for="email-input">Email:</label>
+                <input class="form-control" data-value="email" id="email-input" type="email">
+              </div>
+              <div class="form-group row">
+                <label for="age-input">Age:</label>
+                <input class="form-control" data-value="age" id="age-input" type="number">
+              </div>
+              <div class="form-group row">
+                <label for="comment-input">How did you hear about us?</label>
+                <textarea class="form-control" data-value="comment" id="comment-input" rows="5"></textarea>
+              </div>
+              <button class="btn btn-default" id="add-user" type="submit">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Most Recent Member card -->
+      <div class="col-lg-6">
+        <div class="card card-default">
+          <div class="card-heading">
+            <h3 class="card-title">Most Recent Member</h3>
+          </div>
+          <div class="card-body" id="recent-member">
+            <h2 id="name-display">Jimmy John</h2>
+            <h4 id="email-display">Email: jimmy@john.edu</h4>
+            <h4 id="age-display">Age: 27</h4>
+            <p id="comment-display">I'm signing up, because I want to spread sandwiches to the world.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery.js"></script>
+
+  <!-- Script -->
+  <script>
+    // ========================================= START CODING BELOW!!
+    $(document).ready(function () {
+      if (localStorage.getItem("user-object") !=  null){
+
+        const _localStorageG = JSON.parse(localStorage.getItem("user-object"));
+
+        $("#recent-member").empty().append(`
+          <h2 id="name-display">${_localStorageG.name}</h2>
+          <h4 id="email-display">Email: ${_localStorageG.email}</h4>
+          <h4 id="age-display">Age: ${_localStorageG.age}</h4>
+          <p id="comment-display">${_localStorageG.comment}</p>
+          `);
+      }else{
+        // Capture Button Click
+        $("#add-user").on("click", function(event) {
+          event.preventDefault();
+
+          // Capture User Inputs and store them into variables
+
+          const $inputField = $(".form-control");
+          console.log($inputField);
+
+          $.each($inputField, function(index, value){
+            console.log(value);
+            console.log(value.attr("data-value"));
+          });
+
+          const $name = $("#name-input").val();
+          const $email = $("#email-input").val();
+          const $age = $("#age-input").val();
+          const $comment = $("#comment-input").val();
+
+
+          // Console log each of the user inputs to confirm we are receiving them correctly
+          console.log($name);
+          console.log($email);
+          console.log($age);
+          console.log($comment);
+
+          // Output all of the new information into the relevant HTML sections
+          $("#recent-member").empty().append(`
+            <h2 id="name-display">${$name}</h2>
+            <h4 id="email-display">Email: ${$email}</h4>
+            <h4 id="age-display">Age: ${$age}</h4>
+            <p id="comment-display">${$comment}</p>
+            `);
+
+          const _localStorage = {
+            name: $name,
+            email: $email,
+            age: $age,
+            comment: $comment
+          };
+
+          localStorage.setItem("user-object", JSON.stringify(_localStorage));
+        
+        });
+      };
+    });
+  </script>
+
+</body>
+
+</html>

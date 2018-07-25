@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+<head>
+
+  <meta charset="UTF-8">
+  <title>To Do App!</title>
+
+  <style>
+    #todo-item {
+      font-weight: 700;
+      font-size: 2em;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Title -->
+  <h1>My To Do's!</h1>
+
+  <!-- Input Form -->
+  <form>
+    <span id="todo-item">To Do Item: <input id="to-do" type="text" ><input id="add-to-do" value="Add Item" type="submit"></span>
+  </form>
+
+  <hr>
+
+  <!-- To-Do List -->
+  <div id="to-dos"></div>
+
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- Script -->
+  <script>
+    //  ============================= START CODING BELOW! =============================================
+
+    $(document).ready(function () {
+
+      if (localStorage.getItem("item-0") != null){
+        
+      }
+
+    const todoArray = [];
+    // Create an initial toDoCount variable
+    let toDoCount = 0;
+    //  On Click event associated with the add-to-do function
+    
+    $("#add-to-do").on("click", function(event) {
+      let $todoItem = $("#to-do");
+
+
+      event.preventDefault();
+
+      const $toDoTask = $todoItem.val();
+      
+      const $newTask = $("<p>").attr("id", `item-${toDoCount}`).text($toDoTask);
+      
+      todoArray.push($newTask.attr("id"));
+      console.log(todoArray);
+
+      const $closeButton = $("<button>").attr("id", `close-${toDoCount}`).attr("data-to-do", toDoCount).addClass("checkbox").text("X");
+
+      $newTask.prepend($closeButton);
+
+      $("#to-dos").append($newTask);
+
+      $todoItem.val("");
+
+      toDoCount++;
+
+      localStorage.setItem("tasks", todoArray);
+    });
+
+    //  When a user clicks a check box then delete the specific content
+    //  (NOTE: Pay attention to the unusual syntax here for the click event.
+    //  Because we are creating click events on "dynamic" content, we can't just use the usual "on" "click" syntax.)
+    $(document.body).on("click", ".checkbox", function() {
+
+      // Get the number of the button from its data attribute and hold in a variable called  toDoNumber.
+      const $toDoNumber = $(this).attr("data-to-do");
+
+      // Select and Empty the specific <p> element that previously held the to do item number.
+      $(`#item-${$toDoNumber}`).remove();
+
+      todoArray.splice($toDoNumber, 1);
+
+      $.each(todoArray, function (index, value) {
+        $(`#${value} > .checkbox`).attr("id", `close-${index}`).attr("data-to-do", index);
+        $(`#${value}`).attr("id", `item-${index}`);
+        
+      });
+      console.log(todoArray);
+
+    });
+    });
+  </script>
+
+</body>
+
+</html>
