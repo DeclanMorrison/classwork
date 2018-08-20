@@ -1,4 +1,4 @@
-const fs = require("fs");
+const fs = import("fs");
 
 const total = () => {
   fs.readFile("bank.txt", "utf8", (err, data) => {
