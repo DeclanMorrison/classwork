@@ -1,0 +1,39 @@
+<ul>
+  {{#each movies}}
+  <li>
+    <span>
+      <p>{{this.movies}}<button class="delete" data-id="{{this.ID}}">Delete</button></p>
+    </span>
+  </li>
+  {{/each}}
+</ul>
+
+<form class="add-movie">
+  <textarea type="text" name="movie"></textarea>
+  <button type="submit">Add Movie</button>
+</form>
+
+<script>
+  $(".delete").on("click", function () {
+    const id = $(this).attr("data-id");
+    $.ajax(`/movies/${id}`, {
+      type: "DELETE"
+    }).then(() => {
+      location.reload();
+    });
+  });
+
+  $(".add-movie").on("submit", () => {
+    event.preventDefault();
+
+    const newMovie = {movie: $(".add-movie [name=plan]").val().trim()};
+
+    $.ajax("/movies", {
+      type: POST,
+      data: newMovie
+    }).then(
+      () => {
+        location.reload();
+    });
+  });
+</script>

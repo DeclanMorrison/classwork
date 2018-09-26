@@ -1,0 +1,14 @@
+<ol>
+  {{#each wishes}}
+  <li>
+    <p>{{this.wish}}</p>
+    <p>ID: {{this.ID}}</p>
+  </li>
+  {{/each}}
+</ol>
+
+<form action="/" method="POST">
+	<textarea type="text" name="wish"></textarea>
+
+	<button type="submit">Submit</button>
+</form>
